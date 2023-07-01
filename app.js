@@ -1,5 +1,4 @@
 const path = require("path");
-
 const express = require("express");
 const bodyParser = require("body-parser");
 require("dotenv").config();
@@ -12,7 +11,6 @@ const Cart = require("./models/cart");
 const CartItem = require("./models/cart-item");
 
 const app = express();
-
 app.set("view engine", "ejs");
 app.set("views", "views");
 
@@ -44,8 +42,8 @@ Cart.belongsToMany(Product, { through: CartItem });
 Product.belongsToMany(Cart, { through: CartItem });
 
 sequelize
-  .sync({ force: true })
-  // .sync()
+  // .sync({ force: true })
+  .sync()
   .then((result) => {
     return User.findByPk(1);
     // console.log(result);
